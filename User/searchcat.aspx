@@ -53,7 +53,7 @@
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\215327644elad.mdb" ProviderName="System.Data.OleDb" SelectCommand="SELECT [contenttypeid], [contenttype] FROM [tblcontenttype]"></asp:SqlDataSource>
 
-    <asp:Label ID="lblfail" runat="server" style="z-index: 1; left: 443px; top: 509px; position: absolute" Text="fail" Visible="False"></asp:Label>
+    <asp:Label ID="lblfail" runat="server" style="z-index: 1;font-size:100px; left: 443px; top: 509px; position: absolute" Text="no such content" BackColor="pink" Visible="False"></asp:Label>
 
 </asp:Content>
 
