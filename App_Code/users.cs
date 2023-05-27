@@ -237,6 +237,16 @@ public class users
         string stry = "UPDATE tblUsers SET tblUsers.profile = '"+pic+"' WHERE(((tblUsers.User_Name) ='"+a.User_Name+"'));";
         sql.udi(stry);
     }
+    public void changebirth(users a, DateTime b)
+    {
+        string stry = "UPDATE tblUsers SET tblUsers.birthday = '" + b + "' WHERE(((tblUsers.User_Name) ='" + a.User_Name + "'));";
+        sql.udi(stry);
+    }
+    public void changemail(users a, string em)
+    {
+        string stry = "UPDATE tblUsers SET tblUsers.mail = '" + em + "' WHERE(((tblUsers.User_Name) ='" + a.User_Name + "'));";
+        sql.udi(stry);
+    }
     public void resetpass(users a)
     {
         string newpass = "123";

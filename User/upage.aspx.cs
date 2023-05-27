@@ -28,10 +28,17 @@ public partial class User_upage : System.Web.UI.Page
             pnlPassword.Visible = false;
             pnlEmail.Visible = false;
             pnlBirthday.Visible = false;
+            pnlProfileInfo.Visible = false;
             btninfo.Visible = true;
             Btnchange.Visible = true;
         }
-      
+        //setting mail for mailpnl
+        users user = new users();
+        user.User_Name = Session["user"].ToString();
+        DataSet y = user.mailbyuser(user);
+        lblCurrentEmail.Text = y.Tables[0].Rows[0][0].ToString();
+        lblCurrentEmail.ForeColor = System.Drawing.Color.White;
+
     }
 
     protected void ddlUserOptions_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,6 +47,7 @@ public partial class User_upage : System.Web.UI.Page
         pnlProfilePic.Visible = false;
         pnlPassword.Visible = false;
         pnlEmail.Visible = false;
+        pnlProfileInfo.Visible = false;
         pnlBirthday.Visible = false;
 
         // show the selected panel
@@ -47,24 +55,40 @@ public partial class User_upage : System.Web.UI.Page
         {
             case "pic":
                 {
+                   
+                    pnlPassword.Visible = false;
+                    pnlEmail.Visible = false;
+                    pnlBirthday.Visible = false;
                     pnlProfilePic.Visible = true;
                     break;
                 }
             case "password":
                 {
+                    pnlProfilePic.Visible = false;
+                    pnlEmail.Visible = false;
+                    pnlBirthday.Visible = false;
                     pnlPassword.Visible = true;
                     break;
                 }
             case "email":
                 {
+                    pnlProfilePic.Visible = false;
+                    pnlPassword.Visible = false;
+                    pnlBirthday.Visible = false;
                     pnlEmail.Visible = true;
                     break;
                 }
             case "birthday":
                 {
+                    pnlProfilePic.Visible = false;
+                    pnlPassword.Visible = false;
+                    pnlEmail.Visible = false;
                     pnlBirthday.Visible = true;
                     break;
                 }
+
+            default:
+                throw new Exception("Unexpected Case");
         }
     }
 
@@ -95,14 +119,85 @@ public partial class User_upage : System.Web.UI.Page
 
     protected void btnUpdateEmail_Click(object sender, EventArgs e)
     {
-        // handle email change
-    }
+        string newEmail = txtNewEmail.Text;
 
+        // Perform the necessary logic to update the email
+        // You can use the 'Session["user"]' value to identify the user
+       
+        // Example code to update the email
+        users user = new users();
+        user.User_Name = Session["user"].ToString();
+        user.changemail(user, newEmail);
+        
+       // Display a success message
+       lblEmailMessage.Visible = true;
+        lblEmailMessage.ForeColor = System.Drawing.Color.Green;
+        lblEmailMessage.Text = "Email updated successfully";
+
+        // Hide other panels
+        pnlProfilePic.Visible = false;
+        pnlPassword.Visible = false;
+        pnlBirthday.Visible = false;
+        pnlProfileInfo.Visible = false;
+
+        // Show the pnlEmail panel
+        pnlEmail.Visible = true;
+
+        // Update the displayed email
+        lblCurrentEmail.Text = newEmail;
+    }
+    protected void calBirthday_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
+    {
+        pnlProfileInfo.Visible = false; // Hide the pnlProfileInfo panel
+        pnlBirthday.Visible = true;
+
+        // Display a message or perform other operations
+        lblBirthdayMessage.Text = "The selected month has changed. Update the birthday if needed.";
+        lblBirthdayMessage.Visible = true;
+    }
     protected void calBirthday_SelectionChanged(object sender, EventArgs e)
     {
-        // handle birthday change using asp:Calendar control
+        // Hide all panels except pnlBirthday
+        pnlProfilePic.Visible = false;
+        pnlPassword.Visible = false;
+        pnlEmail.Visible = false;
+        pnlProfileInfo.Visible = false;
+        pnlBirthday.Visible = true;
+
+        // Update the selected date label
+        lblBirthdayMessage.Text = "date is :" + calBirthday.SelectedDate.ToShortDateString();
+        Session["newdate"] = calBirthday.SelectedDate.ToShortDateString();
+
     }
 
+    protected void btnChangeBirthday_Click(object sender, EventArgs e)
+    {
+
+        // Perform your logic to update the birthday using the selectedDate
+
+        // Example: Update the user's birthday in the database
+        users user = new users();
+        user.User_Name = Session["user"].ToString();
+        DateTime dati = DateTime.Parse(Session["newdate"].ToString());
+       
+        user.changebirth(user,dati );
+
+        // Display a success message
+        lblBirthdayMessage.Text = "Birthday updated successfully.";
+        lblBirthdayMessage.ForeColor = System.Drawing.Color.Green;
+        lblBirthdayMessage.Visible = true;
+
+        // Add additional logic or database operations here
+
+        // Hide other panels and show pnlProfileInfo
+        pnlProfilePic.Visible = false;
+        pnlPassword.Visible = false;
+        pnlEmail.Visible = false;
+        pnlBirthday.Visible = true;
+        pnlProfileInfo.Visible = false;
+    }
+
+  
     protected void Btnchange_Click(object sender, EventArgs e)
     {
         ddlUserOptions.Visible = true;
@@ -114,26 +209,76 @@ public partial class User_upage : System.Web.UI.Page
         string oldPassword = txtCurrentPassword.Text;
         string newPassword = txtNewPassword.Text;
         string confirm = txtConfirmPassword.Text;
-       
+
         users user = new users();
-      
+
         user.User_Name = Session["user"].ToString();
         DataSet t = user.passbyuser(user);
         string realpass = t.Tables[0].Rows[0][0].ToString();
 
-
-        if ((newPassword.Trim() == confirm.Trim())&& (realpass.Trim()==oldPassword.Trim()))
+        if ((newPassword.Trim() == confirm.Trim()) && (realpass.Trim() == oldPassword.Trim()))
         {
             user.changepass(user, newPassword);
             lblPasswordMessage.Visible = true;
             lblPasswordMessage.Text = "Password changed successfully";
             lblPasswordMessage.ForeColor = System.Drawing.Color.Green;
-            Response.Redirect("upage.aspx");
+            // Create a link to perform an action
+            HyperLink lnkPasswordMessage = new HyperLink();
+            lnkPasswordMessage.Text = "refresh the hpage";
+            lnkPasswordMessage.ForeColor = System.Drawing.Color.White;
+            lnkPasswordMessage.NavigateUrl = "~/User/upage.aspx";
+
+            // Add the hyperlink next to the label
+            pnlPassword.Controls.Add(new LiteralControl("<br />"));
+            pnlPassword.Controls.Add(lnkPasswordMessage);
+
+            // Hide other panels
+            pnlProfilePic.Visible = false;
+            pnlEmail.Visible = false;
+            pnlBirthday.Visible = false;
+            pnlProfileInfo.Visible = false;
         }
-        lblPasswordMessage.Text = "panick";
-       
-        
+        else if ((newPassword.Trim() == confirm.Trim()) && (realpass.Trim() != oldPassword.Trim()))
+        {
+            lblPasswordMessage.Visible = true;
+            lblPasswordMessage.ForeColor = System.Drawing.Color.Red;
+            lblPasswordMessage.Text = "Old and new password don't match";
+
+            // Hide other panels
+            pnlProfilePic.Visible = false;
+            pnlEmail.Visible = false;
+            pnlBirthday.Visible = false;
+            pnlProfileInfo.Visible = false;
+        }
+        else if ((newPassword.Trim() != confirm.Trim()) && (realpass.Trim() == oldPassword.Trim()))
+        {
+            lblPasswordMessage.Visible = true;
+            lblPasswordMessage.ForeColor = System.Drawing.Color.Red;
+            lblPasswordMessage.Text = "confirm   and new password don't match";
+
+            // Hide other panels
+            pnlProfilePic.Visible = false;
+            pnlEmail.Visible = false;
+            pnlBirthday.Visible = false;
+            pnlProfileInfo.Visible = false;
+        }
+        else
+        {
+            lblPasswordMessage.Visible = true;
+            lblPasswordMessage.ForeColor = System.Drawing.Color.Red;
+            lblPasswordMessage.Text = "An error occurred while changing the password";
+
+            // Hide other panels
+            pnlProfilePic.Visible = false;
+            pnlEmail.Visible = false;
+            pnlBirthday.Visible = false;
+            pnlProfileInfo.Visible = false;
+        }
+
+        // Show the pnlPassword panel
+        pnlPassword.Visible = true;
     }
+
 
 
     protected void Btninfo_Click(object sender, EventArgs e)

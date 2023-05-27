@@ -53,7 +53,8 @@
     <asp:Panel ID="Panel1" runat="server">
     <h2>Change Password</h2>
     <hr />
-        <asp:Label ID="lblPasswordMessage" text="hi" runat="server"></asp:Label>
+        <asp:Label ID="lblPasswordMessage" text="hi" runat="server">
+        </asp:Label>
         <table>
             <tr>
                 <td><b>Current Password:</b></td>
@@ -79,14 +80,44 @@
 </asp:Panel>
 
 </asp:Panel>
-
-<asp:Panel ID="pnlEmail" runat="server" Visible="False">
+<asp:Panel ID="pnlEmail" runat="server" Visible="False"  BackImageUrl="../images/adminback.png">
     <!-- email change controls -->
+    <h2>Change Email</h2>
+    <hr />
+    <table>
+        <tr>
+            <td><b>Current Email:</b></td>
+            <td><asp:Label ID="lblCurrentEmail" runat="server" Text="" /></td>
+        </tr>
+        <tr>
+            <td><b>New Email:</b></td>
+            <td><asp:TextBox ID="txtNewEmail" runat="server" /></td>
+        </tr>
+    </table>
+    <br />
+    <asp:Button ID="btnUpdateEmail" runat="server" Text="Update Email" OnClick="btnUpdateEmail_Click" />
+    <br />
+    <asp:Label ID="lblEmailMessage" runat="server" Visible="false"></asp:Label>
+</asp:Panel>
+   
+
+
+<asp:Panel ID="pnlBirthday" runat="server" Visible="False"  BackImageUrl="../images/adminback.png">>
+    <h2>Change Birthday</h2>
+    <hr />
+    <asp:Label ID="lblBirthdayMessage" runat="server"></asp:Label>
+    <br /><br />
+    <asp:Calendar ID="calBirthday" runat="server" OnSelectionChanged="calBirthday_SelectionChanged"
+    OnVisibleMonthChanged="calBirthday_VisibleMonthChanged" AutoPostBack="False">
+</asp:Calendar>
+
+
+    <br /><br />
+    <asp:Button ID="btnChangeBirthday" runat="server" Text="Change Birthday" OnClick="btnChangeBirthday_Click" />
 </asp:Panel>
 
-<asp:Panel ID="pnlBirthday" runat="server" Visible="False">
-    <!-- birthday change controls using asp:Calendar control -->
-</asp:Panel>
+
+
 
 </asp:Content>
 

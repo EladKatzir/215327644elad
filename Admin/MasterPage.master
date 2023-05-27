@@ -17,6 +17,8 @@
             <ul>
                 <asp:ContentPlaceHolder runat="server" ID="NavigationLinks" />
                 <asp:ContentPlaceHolder runat="server" ID="ButtonList" />
+                 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+   
             </ul>
         </nav>
         <main>

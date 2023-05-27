@@ -29,13 +29,7 @@
         
     </style>
 <body>
-       <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-     <button runat="server" type="button" class="button" onclick="goBack()">
-               <span class="button__text">go back</span>
-               <span class="button__icon">
-                   <ion-icon name="arrow-redo-outline"></ion-icon>
-               </span>
-           </button>
+      
     <form id="form1" runat="server">
     <div>
      <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
