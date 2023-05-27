@@ -31,11 +31,14 @@ public partial class User_upage : System.Web.UI.Page
             pnlProfileInfo.Visible = false;
             btninfo.Visible = true;
             Btnchange.Visible = true;
+            
         }
         //setting mail for mailpnl
         users user = new users();
         user.User_Name = Session["user"].ToString();
         DataSet y = user.mailbyuser(user);
+        DataSet x = user.photobyuser(user);
+        imgavatar.ImageUrl = x.Tables[0].Rows[0][0].ToString();
         lblCurrentEmail.Text = y.Tables[0].Rows[0][0].ToString();
         lblCurrentEmail.ForeColor = System.Drawing.Color.White;
 
