@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="amaster.master.cs" Inherits="amaster" %>
+
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+   <style>
+    .top-bar {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+       .body {
+           background-image: url('../images/atypeb.png');
+           background-size: auto;
+           background-repeat: no-repeat;
+       }
+
+       .button {
+           background-image: url('../images/adminback.png');
+           color: white;
+           padding: 5px 10px;
+           text-decoration: none;
+           margin-right: 10px;
+       }
+
+    .content {
+        padding: 20px;
+    }
+</style>
+
+</head>
+<body class="body">
+    <form id="form1" runat="server">
+        <div class="top-bar">
+            <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="button" OnClick="btnBack_Click" />
+            <asp:Button ID="btnHome" runat="server" Text="Home" CssClass="button" OnClick="btnHome_Click" />
+            <asp:Button ID="btnAType" runat="server" Text="menu" CssClass="button" OnClick="btnAType_Click" />
+        </div>
+        <div class="content">
+            <asp:Label ID="lblPageTitle" runat="server"></asp:Label>
+            <br />
+            <asp:ContentPlaceHolder ID="phButtons" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
