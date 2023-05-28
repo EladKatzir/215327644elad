@@ -31,7 +31,8 @@ public partial class User_upage : System.Web.UI.Page
             pnlProfileInfo.Visible = false;
             btninfo.Visible = true;
             Btnchange.Visible = true;
-            
+            pnlcard.Visible = false;
+
         }
         //setting mail for mailpnl
         users user = new users();
@@ -56,9 +57,10 @@ public partial class User_upage : System.Web.UI.Page
         // show the selected panel
         switch (ddlUserOptions.SelectedValue)
         {
+            
             case "pic":
                 {
-                   
+                    pnlcard.Visible = false;
                     pnlPassword.Visible = false;
                     pnlEmail.Visible = false;
                     pnlBirthday.Visible = false;
@@ -67,6 +69,7 @@ public partial class User_upage : System.Web.UI.Page
                 }
             case "password":
                 {
+                    pnlcard.Visible = false;
                     pnlProfilePic.Visible = false;
                     pnlEmail.Visible = false;
                     pnlBirthday.Visible = false;
@@ -75,6 +78,7 @@ public partial class User_upage : System.Web.UI.Page
                 }
             case "email":
                 {
+                    pnlcard.Visible = false;
                     pnlProfilePic.Visible = false;
                     pnlPassword.Visible = false;
                     pnlBirthday.Visible = false;
@@ -83,10 +87,20 @@ public partial class User_upage : System.Web.UI.Page
                 }
             case "birthday":
                 {
+                    pnlcard.Visible = false;
                     pnlProfilePic.Visible = false;
                     pnlPassword.Visible = false;
                     pnlEmail.Visible = false;
                     pnlBirthday.Visible = true;
+                    break;
+                }
+            case "id":
+                {
+                    pnlcard.Visible = true;
+                    pnlProfilePic.Visible = false;
+                    pnlPassword.Visible = false;
+                    pnlEmail.Visible = false;
+                    pnlBirthday.Visible = false;
                     break;
                 }
 
@@ -299,5 +313,21 @@ public partial class User_upage : System.Web.UI.Page
         lblEmail.Text = y.Tables[0].Rows[0][0].ToString();
         lblPassword.Text = t.Tables[0].Rows[0][0].ToString();
         lblBirthday.Text = z.Tables[0].Rows[0][0].ToString();
+    }
+
+    protected void btngrid_Click(object sender, EventArgs e)
+    {
+        pnlcard.Visible = true;
+        pnlBirthday.Visible = false;
+        pnlEmail.Visible = false;
+        pnlPassword.Visible = false;
+        pnlProfileInfo.Visible = false;
+        pnlProfilePic.Visible = false;
+        ServiceReference1.Credit c = new ServiceReference1.Credit();
+        c.Id = txtid.Text;
+        ServiceReference1.ServiceSoapClient upd = new ServiceReference1.ServiceSoapClient();
+        upd.chkInfo(c);
+        grddat.DataSource = upd.chkInfo(c);
+        grddat.DataBind();
     }
 }

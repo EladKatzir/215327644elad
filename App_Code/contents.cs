@@ -187,5 +187,30 @@ public class contents
         i = sql.chkData(s);
         return i;
     }
+    public bool chkown(contents y, users x)
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT tblcontent.contectId FROM tblcontent INNER JOIN tblSubOrders ON tblcontent.contectId = tblSubOrders.contentId WHERE(((tblcontent.contentname) ='"+y.contentsName+"') AND((tblSubOrders.user) ='"+x.User_Name+"'));";
+        i = sql.chkData(s);
+        if (i.Tables[0].Rows.Count > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public DataSet sumown(contents y, users x)
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT Sum(tblSubOrders.orderAmount) AS SumOforderAmount FROM tblcontent INNER JOIN tblSubOrders ON tblcontent.contectId = tblSubOrders.contentId GROUP BY tblcontent.contentname, tblSubOrders.user HAVING(((tblcontent.contentname) ='"+y.contentsName+"') AND((tblSubOrders.user) ='"+x.User_Name+"'));";
+        i = sql.chkData(s);
+        return i;
+    }
+    public DataSet updatewa(int a, contents y, users x)
+    {
+        DataSet i = new DataSet();
+        string s = "UPDATE tblcontent INNER JOIN tblSubOrders ON tblcontent.contectId = tblSubOrders.contentId SET tblSubOrders.orderAmount = " + a + " WHERE tblSubOrders.user = '" + x.User_Name + "' AND tblcontent.contentname = '" + y.contentsName + "';";
+        i = sql.chkData(s);
+        return i;
+    }
 
 }

@@ -113,5 +113,12 @@ public class shows
         dsshowDt = sql.chkData(stshowDt);
         return dsshowDt;
     }
+    public DataSet showlist()
+    {
+        DataSet dsshowDt = new DataSet();
+        string stshowDt = "SELECT tblshows.showname, tblshows.showid FROM tblshows;";
+        dsshowDt = sql.chkData(stshowDt);
+        return dsshowDt;
+    }
 
 }

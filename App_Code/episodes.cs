@@ -76,4 +76,13 @@ public class episodes
         return dslistuser;
 
     }
+    public DataSet linkbysse(episodes d, shows s)
+    {
+        sqlDb sql = new sqlDb();
+        DataSet dslistuser = new DataSet();
+        string stListuser = "SELECT tblepisodes.seasonnumber, tblepisodes.episodenumber, tblepisodes.episodelink FROM tblshows INNER JOIN tblepisodes ON tblshows.showid = tblepisodes.showfrom WHERE(((tblshows.showname) ='"+s.sgnames+"') AND((tblepisodes.seasonnumber) ="+d.gsseasonnum+") AND((tblepisodes.episodenumber) ="+d.gsepisodenum+"));";
+        dslistuser = sql.chkData(stListuser);
+        return dslistuser;
+
+    }
 }

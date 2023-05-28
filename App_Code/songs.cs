@@ -91,6 +91,16 @@ public class songs
         dssongDt = sql.chkData(stsongDt);
         return dssongDt;
     }
+    public DataSet songlist()
+    {
+        DataSet dsmovieDt = new DataSet();
+        string stmovieDt = "SELECT tblsongs.songname, tblsongs.songid FROM tblsongs;";
+
+        //'" + cool.sggens + "'));";
+
+        dsmovieDt = sql.chkData(stmovieDt);
+        return dsmovieDt;
+    }
     public DataSet songbygen(songs cool)
     {
         DataSet dssongDt = new DataSet();

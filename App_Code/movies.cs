@@ -111,7 +111,7 @@ public class movies
     public DataSet movielist()
     {
         DataSet dsmovieDt = new DataSet();
-        string stmovieDt = "SELECT tblmovies.moviename FROM tblmovies GROUP BY tblmovies.moviename;";
+        string stmovieDt = "SELECT tblmovies.moviename, tblmovies.movieid FROM tblmovies;";
 
         //'" + cool.sggens + "'));";
 

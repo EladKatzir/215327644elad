@@ -36,6 +36,7 @@
     <asp:ListItem Value="password">Change password</asp:ListItem>
     <asp:ListItem Value="email">Change email</asp:ListItem>
     <asp:ListItem Value="birthday">Change birthday</asp:ListItem>
+    <asp:ListItem Value="id">show info by id</asp:ListItem>
 </asp:DropDownList>
 
 <asp:Panel ID="pnlProfilePic" runat="server" Visible="False" BackImageUrl="../images/adminback.png">
@@ -117,6 +118,27 @@
 </asp:Panel>
 
 
+    <!-- password change controls -->
+    <asp:Panel ID="pnlcard" runat="server" Visible="false"  BackImageUrl="../images/adminback.png">
+    <h2>data from credit card</h2>
+    <hr />
+        <table>
+            <tr>
+                <td><b>enter id:</b></td>
+                <td>
+                    <asp:TextBox ID="txtid" runat="server"/>
+                </td>
+            </tr>
+            <tr>
+                <td><b>see the info</b></td>
+                <td>
+                    <asp:GridView ID="grddat" runat="server" BackColor="#FF66FF"></asp:GridView>
+                </td>
+            </tr>
+        </table>
+    <br />
+    <asp:Button ID="btngrid" runat="server" Text="show data" OnClick="btngrid_Click" />
+</asp:Panel>
 
 
 </asp:Content>

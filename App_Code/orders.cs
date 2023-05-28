@@ -125,14 +125,15 @@ public class orders
     public bool chkown(contents y, users x) //check if owned
     {
         DataSet i = new DataSet();
-        string s = "SELECT tblSubOrders.contentId FROM tblSubOrders WHERE (((tblSubOrders.contentId)="+y.contentsId+") AND ((tblSubOrders.user)='"+x.User_Name+"'));";
+        string s = "SELECT tblSubOrders.contentId FROM tblSubOrders WHERE (((tblSubOrders.contentId)=" + y.contentsId + ") AND ((tblSubOrders.user)='" + x.User_Name + "'));";
         i = sql.chkData(s);
-        if(i.Tables[0].Rows.Count>0)
+        if (i.Tables[0].Rows.Count > 0)
         {
             return true;
         }
         return false;
     }
+
 
 
 }
