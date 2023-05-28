@@ -14,6 +14,12 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+            <a href="../Admin/atype.aspx">
+               <span class="button__text">go menu</span>
+               <span class="button__icon">
+                   <ion-icon name="arrow-redo-outline"></ion-icon>
+               </span>
+           </a>
     <form id="form1" runat="server">
     <div style="width: 1400px; margin: 0 auto;">
         <asp:GridView ID="grdlist" runat="server" style="z-index: 1; width: 422px; height: 257px; position: absolute; top: 205px; left: 528px" CellPadding="4" ForeColor="#333333" GridLines="None">

@@ -17,6 +17,12 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+                <a href="../Admin/atype.aspx">
+               <span class="button__text">go menu</span>
+               <span class="button__icon">
+                   <ion-icon name="arrow-redo-outline"></ion-icon>
+               </span>
+           </a>
         <asp:Label ID="Label1" runat="server" Font-Size="37pt" style="z-index: 1; left: 443px; top: 70px; position: absolute; width: 659px;" Text="עדכון מחיר מוצר"></asp:Label>
         <asp:GridView ID="grdMerch" runat="server" style="z-index: 1; left: 895px; top: 162px; position: absolute; height: 115px; width: 196px" OnRowCommand="grdMerch_RowCommand" OnSelectedIndexChanged="grdMerch_SelectedIndexChanged">
             <Columns>

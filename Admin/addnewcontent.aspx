@@ -17,6 +17,12 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+        <a href="../Admin/atype.aspx">
+               <span class="button__text">go menu</span>
+               <span class="button__icon">
+                   <ion-icon name="arrow-redo-outline"></ion-icon>
+               </span>
+           </a>
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 236px; top: -155px; position: absolute" Text="add new content"></asp:Label>
     <asp:DropDownList ID="ddltype" runat="server" DataSourceID="SqlDataSource1" DataTextField="contenttype" DataValueField="contenttypeid" style="z-index: 1; left: 392px; top: 136px; position: absolute" AutoPostBack="True" OnSelectedIndexChanged="ddltype_SelectedIndexChanged">
         </asp:DropDownList>

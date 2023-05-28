@@ -61,6 +61,10 @@
         <button runat="server" type="submit" class="glow-on-hover" onclick="btnsignup_Click"/>  back home
         </button>
             </a>
+        <a href="catalog.aspx" style="font-size:x-large; color:white; text-decoration:none; text-align:center; top: 700px; left: 480px;"
+        <button runat="server" type="submit" class="glow-on-hover" onclick="btnsignup_Click"/>  back to catalog
+        </button>
+            </a>
         <a href="mycart.aspx" style="font-size:x-large; color:white; text-decoration:none; text-align:center; top: 700px; left: 632px;"
         <button runat="server" type="submit" class="glow-on-hover" onclick="btnsignup_Click"/> my basket
         </button>

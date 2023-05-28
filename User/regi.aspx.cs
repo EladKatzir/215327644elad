@@ -18,8 +18,9 @@ public partial class User_regi : System.Web.UI.Page
     protected void btnStep1_Click(object sender, EventArgs e)
     {
         // Validate input for step 1
-        if (Regex.IsMatch(txtFirstName.Text, @"^[a-zA-Z]+$") &&
-            Regex.IsMatch(txtLastName.Text, @"^[a-zA-Z]+$"))
+        if (Regex.IsMatch(txtFirstName.Text, @"^[\p{L}\p{M}]+$") &&
+     Regex.IsMatch(txtLastName.Text, @"^[\p{L}\p{M}]+$"))
+
         {
             // Save data to session
             Session["FirstName"] = txtFirstName.Text;

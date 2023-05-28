@@ -51,6 +51,12 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+                <a href="../Admin/atype.aspx">
+               <span class="button__text">go menu</span>
+               <span class="button__icon">
+                   <ion-icon name="arrow-redo-outline"></ion-icon>
+               </span>
+           </a>
         <div class="container">
              
             <asp:Panel runat="server" CssClass="panel">
