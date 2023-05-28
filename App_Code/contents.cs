@@ -57,7 +57,7 @@ public class contents
     public DataSet idbytypeandname(contents cool)
     {
         DataSet dscontentDt = new DataSet();
-        string stcontentDt = "SELECT tblcontent.contectId FROM tblcontenttype INNER JOIN tblcontent ON tblcontenttype.contenttypeid = tblcontent.contenttype WHERE(((tblcontent.contentname) ='" + contentsName + "') AND((tblcontenttype.contenttype) ='" + cool.contentsType + "'));";
+        string stcontentDt = "SELECT tblcontent.contectId FROM tblcontenttype INNER JOIN tblcontent ON tblcontenttype.contenttypeid = tblcontent.contenttype WHERE(((tblcontent.contentname) ='" + cool.contentsName + "') AND((tblcontenttype.contenttype) ='" + cool.contentsType + "'));";
 
 
         //
@@ -159,4 +159,33 @@ public class contents
             sql.udi(stcontent);
        
     }
+    public DataSet mostwatchedid()
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT TOP 1 contentId FROM tblSubOrders GROUP BY contentId ORDER BY COUNT(*) DESC; ";
+        i = sql.chkData(s);
+        return i;
+    }
+    public DataSet mostexpensive()
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT tblcontent.contentname FROM tblcontent ORDER BY tblcontent.contentprice DESC;";
+        i = sql.chkData(s);
+        return i;
+    }
+    public DataSet mostwatchedname(int x)
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT tblcontent.contentname FROM tblcontent WHERE(((tblcontent.contectId) =" + x + "));";
+        i = sql.chkData(s);
+        return i;
+    }
+    public DataSet contentlistbytype(string x)
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT tblcontent.contentname, tblcontent.contectId FROM tblcontenttype INNER JOIN tblcontent ON tblcontenttype.contenttypeid = tblcontent.contenttype WHERE(((tblcontenttype.contenttype) ='"+x+"'));";
+        i = sql.chkData(s);
+        return i;
+    }
+
 }

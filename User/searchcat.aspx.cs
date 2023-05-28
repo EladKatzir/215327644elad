@@ -137,9 +137,9 @@ public partial class User_searchcat : System.Web.UI.Page
             }
 
             txtname.Text = dsshow.Tables[0].Rows[0][0].ToString();
-            txtgen.Text = dsshow.Tables[0].Rows[0][1].ToString();
-            txtPrice.Text = dsshow.Tables[0].Rows[0][2].ToString();
-            txtlen.Text = dsshow.Tables[0].Rows[0][4].ToString();
+            txtgen.Text = dsshow.Tables[0].Rows[0][2].ToString();
+            txtPrice.Text = dsshow.Tables[0].Rows[0][7].ToString();
+            txtlen.Text = dsshow.Tables[0].Rows[0][1].ToString();
             txtcred.Text = dsshow.Tables[0].Rows[0][5].ToString();
             imgcover.ImageUrl = dsshow.Tables[0].Rows[0][8].ToString();
 

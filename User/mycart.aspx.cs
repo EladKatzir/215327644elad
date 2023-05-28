@@ -131,7 +131,7 @@ public partial class User_mycart : System.Web.UI.Page
                 total = grdcart.Rows[i].Cells[3].Text;
             Session["tot"] = total;
             Session["am"] = orderAmount;
-                orderLine.insertOrderDetails(Session["orderId"].ToString(), conId, orderAmount, total);
+                orderLine.insertOrderDetails(Session["orderId"].ToString(), conId, orderAmount, total,Session["user"].ToString());
 
             }
             //=============================שלב ג ==================================================

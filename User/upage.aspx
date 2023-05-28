@@ -15,15 +15,15 @@
         </tr>
         <tr>
             <td><b>Email:</b></td>
-            <td><asp:Label ID="lblEmail" runat="server" /></td>
+            <td><asp:Label ID="lblEmail" style="color:white"  runat="server" /></td>
         </tr>
         <tr>
             <td><b>Password:</b></td>
-            <td><asp:Label ID="lblPassword" runat="server" Text="********" /></td>
+            <td><asp:Label ID="lblPassword" runat="server" style="color:white"  Text="********" /></td>
         </tr>
         <tr>
             <td><b>Birthday:</b></td>
-            <td><asp:Label ID="lblBirthday" runat="server" /></td>
+            <td><asp:Label ID="lblBirthday" style="color:white" runat="server" /></td>
         </tr>
     </table>
 </asp:Panel>

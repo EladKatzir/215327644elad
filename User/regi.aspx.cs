@@ -105,6 +105,7 @@ public partial class User_regi : System.Web.UI.Page
         pnlStep1.Visible = false;
         pnlStep2.Visible = true;
         pnlStep3.Visible = false;
+        lblError.Text = "all good, procedd";
     }
 
     protected void ShowStep3Panel()
@@ -113,6 +114,7 @@ public partial class User_regi : System.Web.UI.Page
         pnlStep1.Visible = false;
         pnlStep2.Visible = false;
         pnlStep3.Visible = true;
+        lblError.Text = "all good, procedd";
     }
 
     protected void btnlog_Click(object sender, EventArgs e)

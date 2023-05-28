@@ -30,7 +30,6 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <asp:Label ID="Label1" runat="server" style="z-index: 1; position: absolute; top: 72px; left: 613px; font-size: xx-large; font-weight: bold" Text="רשימת משתמשים"></asp:Label>
-                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/return arrow.png" OnClick="ImageButton1_Click1" style="z-index: 1; left: 840px; top: 133px; position: absolute; height: 30px; width: 36px" />
         </div>
     </form>
 </body>

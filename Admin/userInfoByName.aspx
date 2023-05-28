@@ -35,7 +35,6 @@
     
    
         <asp:Label ID="Label1" runat="server" style="font-size: xx-large; font-weight: bold" Text="פרטי משתמש לפי שם משתמש" CssClass="auto-style1"></asp:Label>
-        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/return arrow.png" OnClick="ImageButton1_Click1" style="z-index: 1; left: 840px; top: 133px; position: absolute; height: 30px; width: 36px" />
         <asp:Label ID="lbleu" runat="server" Font-Size="30pt" style="z-index: 1; left: 9px; top: 173px; position: absolute; height: 82px; width: 500px" Text="no user in that name"></asp:Label>
 
          </div>
@@ -54,9 +53,9 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:DropDownList ID="ddlun" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="user_Name" DataValueField="userId" OnSelectedIndexChanged="ddlun_SelectedIndexChanged" style="z-index: 1; left: 662px; top: 133px; position: absolute">
+        <asp:DropDownList ID="ddlun" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="User_Name" DataValueField="UserID" OnSelectedIndexChanged="ddlun_SelectedIndexChanged" style="z-index: 1; left: 662px; top: 133px; position: absolute; right: 656px;">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT [user_Name], [userId] FROM [tblUsers]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:newconnect %>" ProviderName="<%$ ConnectionStrings:newconnect.ProviderName %>" SelectCommand="SELECT [User_Name], [UserID] FROM [tblUsers]"></asp:SqlDataSource>
     </form>
 </body>
      <script>

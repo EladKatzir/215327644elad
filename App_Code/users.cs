@@ -193,6 +193,26 @@ public class users
         dslistcy = sql.chkData(stlistcy);
         return dslistcy;
     }
+    public DataSet avgagey(users cty)
+    {
+
+        DataSet dslistcy = new DataSet();
+        string stlistcy = "SELECT AVG(DateDiff('yyyy', [Birthday], Date())) AS AverageAge FROM tblUsers";
+
+        //'" + cty.CityName + "'));";
+        dslistcy = sql.chkData(stlistcy);
+        return dslistcy;
+    }
+    public DataSet gendercount(string x)
+    {
+
+        DataSet dslistcy = new DataSet();
+        string stlistcy = "SELECT Count(tblUsers.Gender) AS CountOfGender FROM tblUsersGender INNER JOIN tblUsers ON tblUsersGender.GenderID = tblUsers.Gender GROUP BY tblUsersGender.Gender HAVING(((tblUsersGender.Gender) ='"+x+"'));";
+
+        //'" + cty.CityName + "'));";
+        dslistcy = sql.chkData(stlistcy);
+        return dslistcy;
+    }
     public DataSet userInfoByUsrename(users user)
     {
         sqlDb sqlListuser = new sqlDb();

@@ -108,6 +108,16 @@ public class movies
         dsmovieDt = sql.chkData(stmovieDt);
         return dsmovieDt;
     }
+    public DataSet movielist()
+    {
+        DataSet dsmovieDt = new DataSet();
+        string stmovieDt = "SELECT tblmovies.moviename FROM tblmovies GROUP BY tblmovies.moviename;";
+
+        //'" + cool.sggens + "'));";
+
+        dsmovieDt = sql.chkData(stmovieDt);
+        return dsmovieDt;
+    }
     public DataSet moviebyname(movies cool)
     {
         DataSet dsmovieDt = new DataSet();

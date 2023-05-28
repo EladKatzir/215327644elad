@@ -80,8 +80,8 @@
 </asp:Panel>
 
 
-        <asp:Label ID="lblSuccess" runat="server" style="z-index: 1; left: 1053px; top: 432px; position: absolute" Text="Label" ></asp:Label>
-           <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 1053px; top: 432px; position: absolute"  ForeColor="white" text="everything is alright, procedd"></asp:Label>
+        <asp:Label ID="lblSuccess" runat="server" style="z-index: 1; left: 498px; top: 162px; position: absolute" Text="Label" Font-Size="XX-Large" ></asp:Label>
+           <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 512px; top: 257px; position: absolute"  ForeColor="White" text="everything is alright, procedd" Font-Size="XX-Large"></asp:Label>
             <asp:Panel ID="pnlRegistrationSuccess" runat="server" Visible="False">
     <p>Registration successful!</p>
                   <asp:Button ID="btnlog" runat="server" style="z-index: 1; left: 10px; top: 100px; font-size:large; position: absolute" Text="log in" OnClick="btnlog_Click" />

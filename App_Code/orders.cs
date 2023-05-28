@@ -62,9 +62,9 @@ public class orders
         return lastordid;
     }
     //הכנסת פרטי הספרים לטבלת פרטי הזמנות
-    public void insertOrderDetails(string orderid, string bookid, string quantitiy, string tot)
+    public void insertOrderDetails(string orderid, string bookid, string quantitiy, string tot, string u)
     {
-        string stinsert = "insert into tblSubOrders(orderId,contentId,orderAmount,Total)values('" + orderid + "','" + bookid + "','" + quantitiy + "','" + tot + "')";
+        string stinsert = "insert into tblSubOrders(orderId,contentId,orderAmount,Total,user)values('" + orderid + "','" + bookid + "','" + quantitiy + "','" + tot + "','" + u + "')";
         sql.udi(stinsert);
 
     }
@@ -95,8 +95,44 @@ public class orders
     public DataSet getorderbyid(orders ne)
     {
         DataSet i = new DataSet();
-        string s = "SELECT tblcontent.contectId, tblcontent.contentname, tblcontent.contentprice, tblSubOrders.Total, tblSubOrders.orderAmount FROM tblOrders INNER JOIN (tblcontent INNER JOIN tblSubOrders ON tblcontent.contectId = tblSubOrders.contentId) ON tblOrders.OrderId = tblSubOrders.orderId WHERE(((tblOrders.OrderId) =" + ne.OrderId+ "));";
+        string s = "SELECT tblcontent.contectId, tblcontent.contentname, tblcontent.contentprice, tblSubOrders.Total, tblSubOrders.orderAmount FROM tblOrders INNER JOIN (tblcontent INNER JOIN tblSubOrders ON tblcontent.contectId = tblSubOrders.contentId) ON tblOrders.OrderId = tblSubOrders.orderId WHERE(((tblOrders.OrderId) =" + ne.OrderId + "));";
         i = sql.chkData(s);
         return i;
     }
+    public DataSet usermostorder()
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT Max(tblOrders.user_Name) AS MaxOfuser_Name FROM tblOrders;";
+        i = sql.chkData(s);
+        return i;
+    }
+    public DataSet getcontentidbyuser(users name)
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT tblSubOrders.contentId FROM tblSubOrders WHERE(((tblSubOrders.user) ='" + name.User_Name + "'));";
+        i = sql.chkData(s);
+        return i;
+    }
+    public DataSet countown(contents y, users x)
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT Sum(tblSubOrders.orderAmount) AS SumOforderAmount FROM tblSubOrders GROUP BY tblSubOrders.contentId, tblSubOrders.user HAVING(((tblSubOrders.contentId) =" + y.contentsId + ") AND((tblSubOrders.user) ='" + x.User_Name + "'));";
+        i = sql.chkData(s);
+        return i;
+    }
+
+
+    public bool chkown(contents y, users x) //check if owned
+    {
+        DataSet i = new DataSet();
+        string s = "SELECT tblSubOrders.contentId FROM tblSubOrders WHERE (((tblSubOrders.contentId)="+y.contentsId+") AND ((tblSubOrders.user)='"+x.User_Name+"'));";
+        i = sql.chkData(s);
+        if(i.Tables[0].Rows.Count>0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -12,14 +12,14 @@ public partial class userListByName : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Admin"] == null)
-            Response.Redirect("adminlogin.aspx");
+            Response.Redirect("alogin.aspx");
         lbleu.Visible = false;
         
     }
 
     protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("adminmenu.aspx");
+        Response.Redirect("atype.aspx");
     }
 
     protected void grdlist_SelectedIndexChanged(object sender, EventArgs e)
