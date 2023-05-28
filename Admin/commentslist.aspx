@@ -14,9 +14,10 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+    
     <form id="form1" runat="server">
     <div>
-    
+    <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
     </div>
         <asp:GridView ID="grdcm" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnRowCommand="grdcm_RowCommand" style="z-index: 1; left: 175px; top: 323px; position: absolute; height: 404px; width: 664px">
             <AlternatingRowStyle BackColor="#CCCCCC" />

@@ -13,6 +13,10 @@ public partial class Admin_changeprice : System.Web.UI.Page
     {
 
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 
     protected void rblTy_SelectedIndexChanged(object sender, EventArgs e)
     {

@@ -16,6 +16,10 @@ public partial class userListByName : System.Web.UI.Page
         lbleu.Visible = false;
         
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 
     protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
     {

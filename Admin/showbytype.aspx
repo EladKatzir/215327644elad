@@ -6,7 +6,9 @@
 <head runat="server">
     <title></title>
 </head>
+
 <body  style="background-color:blueviolet">
+   
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
      <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
@@ -16,7 +18,7 @@
            </button>
     <form id="form1" runat="server">
     <div>
-    
+     <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
     </div>
         <asp:Label ID="lble" runat="server" Font-Size="XX-Large" style="z-index: 1; left: 10px; top: 39px; position: absolute" Text="epmty genere"></asp:Label>
         <asp:DropDownList ID="ddlgen" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlgen_SelectedIndexChanged1" style="z-index: 1; left: 812px; top: 193px; position: absolute">

@@ -64,7 +64,7 @@ public class orders
     //הכנסת פרטי הספרים לטבלת פרטי הזמנות
     public void insertOrderDetails(string orderid, string bookid, string quantitiy, string tot, string u)
     {
-        string stinsert = "insert into tblSubOrders(orderId,contentId,orderAmount,Total,user)values('" + orderid + "','" + bookid + "','" + quantitiy + "','" + tot + "','" + u + "')";
+        string stinsert = "INSERT INTO tblSubOrders (orderId, contentId, orderAmount, Total, [user]) VALUES ('" + orderid + "', '" + bookid + "', '" + quantitiy + "', '" + tot + "', '" + u + "')";
         sql.udi(stinsert);
 
     }

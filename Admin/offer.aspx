@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body  style="background-color:blueviolet">
+   
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
@@ -16,6 +17,7 @@
            </button>
     <form id="form1" runat="server">
     <div>
+         <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
      <asp:Label ID="Label1" runat="server" Font-Size="37pt" style="z-index: 1; left: 439px; top: 77px; position: absolute; width: 663px;" Text="מבצעים!"></asp:Label>
         <asp:GridView ID="grdMerch" runat="server" style="z-index: 1; left: 831px; top: 276px; position: absolute; height: 115px; width: 196px">
         </asp:GridView>

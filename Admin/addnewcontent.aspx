@@ -10,7 +10,9 @@
 
     <form id="form1" runat="server">
     <div>
+         <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
         <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+       
      <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
                <span class="button__icon">

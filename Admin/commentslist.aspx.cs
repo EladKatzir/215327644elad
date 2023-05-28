@@ -13,6 +13,10 @@ public partial class Admin_commentslist : System.Web.UI.Page
     {
 
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 
     protected void ddltype_SelectedIndexChanged(object sender, EventArgs e)
     {

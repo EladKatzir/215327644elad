@@ -62,6 +62,10 @@ public partial class User_watch : System.Web.UI.Page
             ddlshow.Items.Add(tmpsh);
         }
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../user/homepage.aspx");
+    }
     protected void ddlshow_SelectedIndexChanged(object sender, EventArgs e)
     {
         lbls.Visible = true;

@@ -84,6 +84,7 @@ public partial class User_regi : System.Web.UI.Page
         {
             User.newuser();
             Session["user"] = Session["FirstName"].ToString();
+            lblSuccess.Visible = true;
             lblSuccess.Text = "Registration successful!";
             pnlStep1.Visible = false;
             pnlStep2.Visible = false;

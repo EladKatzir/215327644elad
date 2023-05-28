@@ -14,6 +14,10 @@ public partial class Admin_showbytype : System.Web.UI.Page
         lble.Visible = false;
         
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 
 
     protected void ddlgen_SelectedIndexChanged1(object sender, EventArgs e)

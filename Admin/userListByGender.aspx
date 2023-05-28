@@ -41,6 +41,7 @@
     </style>
 </head>
 <body  style="background-color:blueviolet">
+   
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
      <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
@@ -50,7 +51,7 @@
            </button>
     <form id="form1" runat="server">
     <div>
-    
+     <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
     </div>
         <asp:GridView ID="grdlist" runat="server" CellPadding="4" CssClass="auto-style7" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />

@@ -14,7 +14,11 @@ public partial class Admin_userListByGender : System.Web.UI.Page
         if (Session["Admin"] == null)
             Response.Redirect("alogin.aspx");
         lbleu.Visible = false;
-        
+
+    }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
     }
 
 

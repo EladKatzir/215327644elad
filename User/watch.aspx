@@ -72,6 +72,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:Button ID="btnhome" runat="server" Text="menu" OnClick="btnmenu_Click"  />
 
     <asp:DropDownList ID="ddlOptions" runat="server" AutoPostBack="true" CssClass="center-dropdown" OnSelectedIndexChanged="ddlOptions_SelectedIndexChanged1">
                 <asp:ListItem Text="Choose" Value="choose"></asp:ListItem>
@@ -79,7 +80,7 @@
                 <asp:ListItem Text="Shows" Value="shows"></asp:ListItem>
                 <asp:ListItem Text="Songs" Value="songs"></asp:ListItem>
             </asp:DropDownList>
-        <asp:Label ID="lbls" runat="server" BackColor="White" style="z-index: 1; left: 429px; top: 124px; position: absolute" Text="every show has 1 episodes in season 1!" Visible="false"></asp:Label>
+        <asp:Label ID="lbls" runat="server" BackColor="White" style="z-index: 1; left: 429px; top: 124px; position: absolute" Text="every show has 1 episodes in season 1! nothing else. limit of drive size" Visible="false"></asp:Label>
         <asp:Panel ID="pnlmovie" runat="server" Visible="False"  BackImageUrl="../images/adminback.png">
     <!-- email change controls -->
     <h2>movies</h2>

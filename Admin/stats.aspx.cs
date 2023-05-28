@@ -48,11 +48,15 @@ public partial class Admin_stats : System.Web.UI.Page
         DataSet g = shw.mostwatchedname(idd);
         txtMostcontent.Text = g.Tables[0].Rows[0][0].ToString();
         DataSet h = shw.mostexpensive();
-        txtexpcontent.Text= h.Tables[0].Rows[0][0].ToString();
+        txtexpcontent.Text = h.Tables[0].Rows[0][0].ToString();
 
 
 
 
 
+    }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
     }
 }

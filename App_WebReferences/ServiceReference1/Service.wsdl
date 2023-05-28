@@ -173,6 +173,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="copbyname">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="add" type="tns:coupon" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="copbynameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="copbynameResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="DeleteCoupon">
         <s:complexType>
           <s:sequence>
@@ -316,6 +337,12 @@
   <wsdl:message name="perbycoupSoapOut">
     <wsdl:part name="parameters" element="tns:perbycoupResponse" />
   </wsdl:message>
+  <wsdl:message name="copbynameSoapIn">
+    <wsdl:part name="parameters" element="tns:copbyname" />
+  </wsdl:message>
+  <wsdl:message name="copbynameSoapOut">
+    <wsdl:part name="parameters" element="tns:copbynameResponse" />
+  </wsdl:message>
   <wsdl:message name="DeleteCouponSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteCoupon" />
   </wsdl:message>
@@ -392,6 +419,10 @@
     <wsdl:operation name="perbycoup">
       <wsdl:input message="tns:perbycoupSoapIn" />
       <wsdl:output message="tns:perbycoupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="copbyname">
+      <wsdl:input message="tns:copbynameSoapIn" />
+      <wsdl:output message="tns:copbynameSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeleteCoupon">
       <wsdl:input message="tns:DeleteCouponSoapIn" />
@@ -503,6 +534,15 @@
     </wsdl:operation>
     <wsdl:operation name="perbycoup">
       <soap:operation soapAction="http://tempuri.org/perbycoup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copbyname">
+      <soap:operation soapAction="http://tempuri.org/copbyname" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -650,6 +690,15 @@
     </wsdl:operation>
     <wsdl:operation name="perbycoup">
       <soap12:operation soapAction="http://tempuri.org/perbycoup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copbyname">
+      <soap12:operation soapAction="http://tempuri.org/copbyname" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
