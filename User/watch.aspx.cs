@@ -22,7 +22,7 @@ public partial class User_watch : System.Web.UI.Page
             Response.Write("<script language='javascript'>window.alert('You aren't logged in.')</script>");
             Response.Redirect("ulogin.aspx");
         }
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
             Session["l"] = "LINK";
         }
@@ -34,13 +34,19 @@ public partial class User_watch : System.Web.UI.Page
         {
             case "movies":
                 pnlmovie.Visible = true;
+                pnlshow.Visible = false;
+                pnlsong.Visible = false;
                 fillmovie();
                 break;
             case "songs":
+                pnlshow.Visible = false;
+                pnlmovie.Visible = false;
                 pnlsong.Visible = true;
                 fillsong();
                 break;
             case "shows":
+                pnlmovie.Visible = false;
+                pnlsong.Visible = false;
                 pnlshow.Visible = true;
                 lbls.Visible = true;
                 fillshow();
@@ -89,9 +95,9 @@ public partial class User_watch : System.Web.UI.Page
         ddlmovie.Items.Clear();
         string tmp = "";
         ddlmovie.Items.Add("choose");
-        for(int i=0;i<a.Tables[0].Rows.Count;i++)
+        for (int i = 0; i < a.Tables[0].Rows.Count; i++)
         {
-            tmp=a.Tables[0].Rows[i][0].ToString();
+            tmp = a.Tables[0].Rows[i][0].ToString();
             ddlmovie.Items.Add(tmp);
         }
     }
@@ -102,7 +108,7 @@ public partial class User_watch : System.Web.UI.Page
         ddlsong.Items.Clear();
         string tmps = "";
         ddlsong.Items.Add("choose");
-        for (int i = 0; i <b.Tables[0].Rows.Count; i++)
+        for (int i = 0; i < b.Tables[0].Rows.Count; i++)
         {
             tmps = b.Tables[0].Rows[i][0].ToString();
             ddlsong.Items.Add(tmps);
@@ -166,21 +172,21 @@ public partial class User_watch : System.Web.UI.Page
         movies cool = new movies();
         cool.sgnamem = ddlmovie.SelectedValue;
         DataSet LINK = cool.linkbyname(cool);
-        if(LINK.Tables[0].Rows.Count<0)
+        if (LINK.Tables[0].Rows.Count < 0)
         {
             lble.Visible = true;
         }
-       
-        Session["l"]= LINK.Tables[0].Rows[0][2].ToString();
+
+        Session["l"] = LINK.Tables[0].Rows[0][2].ToString();
     }
     protected void ddlseason_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void ddlepisode_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
+
     }
     protected void btnwatchshow_Click(object sender, EventArgs e)
     {
@@ -202,5 +208,5 @@ public partial class User_watch : System.Web.UI.Page
         Session["l"] = link.Tables[0].Rows[0][2].ToString();
     }
 
-   
+
 }

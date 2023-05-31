@@ -17,7 +17,7 @@
         <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 594px; top: 203px; position: absolute; font-size: large; text-align: center" Text="מחיר" ForeColor="White"></asp:Label>
         <asp:TextBox ID="amount" runat="server" style="z-index: 1; left: 354px; top: 161px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="price" runat="server" style="z-index: 1; left: 353px; top: 204px; position: absolute"></asp:TextBox>
-              <asp:ImageButton ID="imgeye" runat="server" Height="29px" ImageUrl="../images/eyeo.png" style="z-index: 1; left: 495px; top: 101px; position: absolute" Width="30px" OnClick="imgeye_Click" />
+              <asp:ImageButton ID="imgeye" runat="server" Height="29px" ImageUrl="../images/imgeye.png" style="z-index: 1; left: 495px; top: 101px; position: absolute" Width="30px" OnClick="imgeye_Click" />
         <asp:GridView ID="grdrec" runat="server" style="z-index: 1; left: -313px; top: -6px; position: absolute; height: 125px; width: 283px" CellPadding="4" ForeColor="White" GridLines="Horizontal" BackColor="Black" BorderColor="Purple" BorderStyle="Dashed" BorderWidth="10px">
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />

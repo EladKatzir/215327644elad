@@ -12,6 +12,7 @@
     
     </div>
 
+        <asp:Button ID="btnmenu" runat="server" Text="home" OnClick="btnmenu_Click"  />
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 300px; top: 135px; position: absolute" Text="commands by" ForeColor="White" Font-Size="60pt"></asp:Label>
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 770px; top: 135px; position: absolute" Text="type" ForeColor="#B4E4FF" Font-Size="60pt"></asp:Label>
         <asp:ImageButton ID="btnuser" ImageUrl="../images/userb.png" runat="server" style="z-index: 1; left: 150px; top: 325px; height:150px; width:150px; position: absolute;" OnClick="btnuser_Click" />

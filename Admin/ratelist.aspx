@@ -15,6 +15,11 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+     <div style="position: fixed; bottom: 10px; left: 10px;">
+    <button onclick="location.href='reviewmenu.aspx';">
+        <img src="../images/men.jpg" width=50px height="50px" alt="Icon" />
+    </button>
+</div>
     <form id="form1" runat="server">
     <div>
      <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />

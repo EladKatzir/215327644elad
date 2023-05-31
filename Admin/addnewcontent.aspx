@@ -19,6 +19,12 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
+        <div style="position: fixed; bottom: 10px; left: 10px;">
+    <button onclick="location.href='productmenu.aspx';">
+        <img src="../images/men.jpg" width=50px height="50px" alt="Icon" />
+    </button>
+</div>
+
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 236px; top: -155px; position: absolute" Text="add new content"></asp:Label>
     <asp:DropDownList ID="ddltype" runat="server" DataSourceID="SqlDataSource1" DataTextField="contenttype" DataValueField="contenttypeid" style="z-index: 1; left: 392px; top: 136px; position: absolute" AutoPostBack="True" OnSelectedIndexChanged="ddltype_SelectedIndexChanged">
         </asp:DropDownList>
