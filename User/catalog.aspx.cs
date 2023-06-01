@@ -71,58 +71,103 @@ public partial class Admin_catalog : System.Web.UI.Page
 
     protected void cblgenere_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (rbltype.SelectedItem.Text == "movies")
+        if (cblgenere.SelectedItem == null)
         {
-            movies a = new movies();
-            a.sggenm = cblgenere.SelectedItem.Text;
-            DataSet dsT = new DataSet();
-            dsT = a.moviebygen(a);
-            string tmp = "";
-            ddlmovie.Items.Clear(); //cbl since i want to later have a show or movie to have two or more genres
-            ddlmovie.Items.Add("choose movie");
-            for (int i = 0; i < dsT.Tables[0].Rows.Count; i++)
-            {
-                tmp = dsT.Tables[0].Rows[i][0].ToString();
-                ddlmovie.Items.Add(tmp);
-            }
-            ddlmovie.Visible = true;
-            cblgenere.Enabled = false;
+            // No item is selected in the CheckBoxList
+            // Handle the scenario accordingly
+            // For example, display an error message or perform an alternative action
+            lble.Text = "Please select at least one item.";
+            lble.Visible = true;
+            cblgenere.Enabled = true;
 
         }
-        if (rbltype.SelectedItem.Text == "shows" &&cblgenere.SelectedItem.Text!="")
+        else
         {
-
-            shows sa = new shows();
-            sa.sggens = cblgenere.SelectedItem.Text;
-            DataSet dsTs = new DataSet();
-            dsTs = sa.showbygen(sa);
-            string tmps = "";
-            ddlshow.Items.Clear(); //cbl since i want to later have a show or movie to have two or more genres
-            ddlshow.Items.Add("choose show");
-            for (int i = 0; i < dsTs.Tables[0].Rows.Count; i++)
+            if (rbltype.SelectedItem.Text == "movies" && cblgenere.SelectedItem.Text != "")
             {
-                tmps = dsTs.Tables[0].Rows[i][0].ToString();
-                ddlshow.Items.Add(tmps);
-            }
-            ddlshow.Visible = true;
+                lble.Visible = false;
+                movies a = new movies();
+                if (cblnotempty())
+                {
+                    a.sggenm = cblgenere.SelectedItem.Text;
+                    DataSet dsT = new DataSet();
+                    dsT = a.moviebygen(a);
+                    string tmp = "";
+                    ddlmovie.Items.Clear(); //cbl since i want to later have a show or movie to have two or more genres
+                    ddlmovie.Items.Add("choose movie");
+                    for (int i = 0; i < dsT.Tables[0].Rows.Count; i++)
+                    {
+                        tmp = dsT.Tables[0].Rows[i][0].ToString();
+                        ddlmovie.Items.Add(tmp);
+                    }
+                    ddlmovie.Visible = true;
+                    cblgenere.Enabled = false;
+                }
+                else
+                {
+                    lble.Visible = true;
+                    return;
+                }
 
-        }
-        if (rbltype.SelectedItem.Text == "songs")
-        {
-            songs soa = new songs();
-            soa.sggeny = cblgenere.SelectedItem.Text;
-            DataSet dsTso = new DataSet();
-            dsTso = soa.songbygen(soa);
-            string tmpso = "";
-            ddlsong.Items.Clear(); //cbl since i want to later have a show or movie to have two or more genres
-            ddlsong.Items.Add("choose show");
-            for (int i = 0; i < dsTso.Tables[0].Rows.Count; i++)
+
+            }
+            if (rbltype.SelectedItem.Text == "shows" && cblgenere.SelectedItem.Text != "")
             {
-                tmpso = dsTso.Tables[0].Rows[i][0].ToString();
-                ddlsong.Items.Add(tmpso);
-            }
-            ddlsong.Visible = true;
+                lble.Visible = false;
+                shows sa = new shows();
+                if (cblnotempty())
+                {
+                    sa.sggens = cblgenere.SelectedItem.Text;
+                    DataSet dsTs = new DataSet();
+                    dsTs = sa.showbygen(sa);
+                    string tmps = "";
+                    ddlshow.Items.Clear(); //cbl since i want to later have a show or movie to have two or more genres
+                    ddlshow.Items.Add("choose show");
+                    for (int i = 0; i < dsTs.Tables[0].Rows.Count; i++)
+                    {
+                        tmps = dsTs.Tables[0].Rows[i][0].ToString();
+                        ddlshow.Items.Add(tmps);
+                    }
+                    ddlshow.Visible = true;
+                }
+                else
+                {
+                    lble.Visible = true;
+                    return;
+                }
 
+            }
+            if (rbltype.SelectedItem.Text == "songs" && cblgenere.SelectedItem.Text != "")
+            {
+                lble.Visible = false;
+                songs soa = new songs();
+                if (cblnotempty())
+                {
+                    soa.sggeny = cblgenere.SelectedItem.Text;
+                    DataSet dsTso = new DataSet();
+                    dsTso = soa.songbygen(soa);
+                    string tmpso = "";
+                    ddlsong.Items.Clear(); //cbl since i want to later have a show or movie to have two or more genres
+                    ddlsong.Items.Add("choose song");
+                    for (int i = 0; i < dsTso.Tables[0].Rows.Count; i++)
+                    {
+                        tmpso = dsTso.Tables[0].Rows[i][0].ToString();
+                        ddlsong.Items.Add(tmpso);
+                    }
+                    ddlsong.Visible = true;
+                }
+                else if (!cblnotempty())
+                {
+                    lble.Visible = true;
+                    return;
+                }
+            }
+            if (cblgenere.SelectedItem.Text == "choose genere")
+            {
+                lble.Text = "choose a genere!unselect choose a genere option";
+                lble.Visible = true;
+                cblgenere.Enabled = true;
+            }
         }
     }
 
@@ -314,5 +359,23 @@ public partial class Admin_catalog : System.Web.UI.Page
         //addto.Total = txtPay.Text;
         //addto.addToCart(addto);
         //lblsucc.Visible = true;
+    }
+    protected bool cblnotempty()
+    {
+        if (cblgenere.SelectedItem == null)
+        {
+            // No item is selected in the CheckBoxList
+            // Handle the scenario accordingly
+            // For example, display an error message or perform an alternative action
+            lble.Text = "Please select at least one item.";
+            lble.Visible = true;
+            return false;
+
+        }
+        else
+        {
+            lble.Visible = false;
+            return true;
+        }
     }
 }

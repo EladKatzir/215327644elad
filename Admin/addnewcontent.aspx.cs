@@ -26,4 +26,9 @@ public partial class Admin_addnewcontent : System.Web.UI.Page
     {
         Panel1.Visible = true;
     }
+
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 }

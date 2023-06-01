@@ -88,4 +88,28 @@ public class cart
         ;
         sql.udi(stDel);
     }
+    public DataSet My(cart user)
+    {
+        DataSet DSCart = new DataSet();
+        string stCart = "SELECT tblCart.user_Name, tblCart.contentId, tblCart.orderAmount, tblCart.total, tblcontent.contentname FROM tblcontent INNER JOIN tblCart ON tblcontent.contectId = tblCart.contentId WHERE(((tblCart.user_Name) ='" + user.UserName + "') AND((tblCart.contentId) =" + user.contentsId + "));";
+
+        DSCart = sql.chkData(stCart);
+        return DSCart;
+    }
+    public void delitemFromCart(cart ct, string x)
+    {
+
+
+        string stDel = "DELETE FROM tblCart WHERE user_Name = '" + ct.UserName + "' AND contentId IN( SELECT contectId FROM tblcontent WHERE contentname = '" + x + "');";
+        ;
+        sql.udi(stDel);
+    }
+    public DataSet all(cart user)
+    {
+        DataSet DSCart = new DataSet();
+        string stCart = "SELECT tblCart.user_Name, tblCart.contentId, tblCart.orderAmount, tblCart.total, tblcontent.contentname FROM tblcontent INNER JOIN tblCart ON tblcontent.contectId = tblCart.contentId WHERE(((tblCart.user_Name) ='"+user.UserName+"'));";
+
+        DSCart = sql.chkData(stCart);
+        return DSCart;
+    }
 }

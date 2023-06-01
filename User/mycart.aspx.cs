@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.OleDb;
 
 public partial class User_mycart : System.Web.UI.Page
 {
@@ -26,30 +28,37 @@ public partial class User_mycart : System.Web.UI.Page
             grduser.DataBind();
             cart ct = new cart();
             ct.UserName = a;
-            grdcart.DataSource = ct.MyCart(ct);
-            grdcart.DataBind();
+            DataSet x = ct.MyCart(ct);
+            if (x.Tables[0].Rows.Count > 0)
+            {
+                string num = x.Tables[0].Rows[0][1].ToString();
+                ct.contentsId = num;
+                grdcart.DataSource = ct.all(ct);
+                grdcart.DataBind();
 
-            // סיכום סך הכל לתשלום ומספר הפריטים שקניתי
-            string tmpTotal, tmpAmount;
-            int sumTotal = 0, sumAmount = 0;
-            for (int i = 0; i < grdcart.Rows.Count; i++)
-            {
-                tmpAmount = grdcart.Rows[i].Cells[2].Text;
-                tmpTotal = grdcart.Rows[i].Cells[3].Text;
-                sumAmount += int.Parse(tmpAmount);
-                sumTotal += int.Parse(tmpTotal);
+                // סיכום סך הכל לתשלום ומספר הפריטים שקניתי
+                string tmpTotal, tmpAmount;
+                int sumTotal = 0, sumAmount = 0;
+                for (int i = 0; i < grdcart.Rows.Count; i++)
+                {
+                    tmpAmount = grdcart.Rows[i].Cells[3].Text; //3
+                    tmpTotal = grdcart.Rows[i].Cells[4].Text; //4
+                    sumAmount += int.Parse(tmpAmount);
+                    sumTotal += int.Parse(tmpTotal);
+                }
+                txtTotal.Text = sumTotal.ToString();
+                txtNum.Text = sumAmount.ToString();
+                Session["tot"] = sumTotal.ToString();
+                Session["num"] = sumAmount.ToString();
+                //  pnlPay.Visible = false;
+                //  btnRecipt.Visible = false;
+                for (int i = 0; i < grdcart.Rows.Count; i++)
+                {
+                    grdcart.FooterRow.Cells[3].Text = sumTotal.ToString(); //3
+                    grdcart.FooterRow.Cells[4].Text = sumAmount.ToString(); //4
+                }
             }
-            txtTotal.Text = sumTotal.ToString();
-            txtNum.Text = sumAmount.ToString();
-            Session["tot"] = sumTotal.ToString();
-            Session["num"] = sumAmount.ToString();
-            //  pnlPay.Visible = false;
-            //  btnRecipt.Visible = false;
-            for (int i = 0; i < grdcart.Rows.Count; i++)
-            {
-                grdcart.FooterRow.Cells[2].Text = sumTotal.ToString();
-                grdcart.FooterRow.Cells[3].Text = sumAmount.ToString();
-            }
+
         }
     }
     protected void Button2_Click1(object sender, EventArgs e)
@@ -97,6 +106,7 @@ public partial class User_mycart : System.Web.UI.Page
         //chk if cardNum is valid
         if (chkcard.chkCard(lhC))
         {
+            lblsucc.Text = "done";
             lblsucc.Visible = true;
             reciept.Visible = true;
         }
@@ -109,47 +119,47 @@ public partial class User_mycart : System.Web.UI.Page
         ////========================================= ארכיון הזמנות - סיום הזמנה ============================
         ////=============================== שלב א =============================================
         ////שליפת קוד משתמש
-            users user = new users();
-            user.User_Name = Session["user"].ToString();
-            // string userid = user.user_id(user);
-            orders order = new orders(txtDate.Text, Session["user"].ToString());
-            order.OrderDate = date.Text;
-            order.Username = Session["user"].ToString();
-            //הכנסת תאריך הזמנה וקוד לקוח להזמנה -מס ההזמנה מתקבל אוטומטי באופן מיידי
-            order.insertOrder(order);
-            //מס ההזמנה האחרון להצגה של הלקוח המזמין
-            Session["orderId"] = order.getLastorderId(order); //תוקנה שגיאה שנבעה מחוסר של משתנה בטבלה
+        users user = new users();
+        user.User_Name = Session["user"].ToString();
+        // string userid = user.user_id(user);
+        orders order = new orders(txtDate.Text, Session["user"].ToString());
+        order.OrderDate = date.Text;
+        order.Username = Session["user"].ToString();
+        //הכנסת תאריך הזמנה וקוד לקוח להזמנה -מס ההזמנה מתקבל אוטומטי באופן מיידי
+        order.insertOrder(order);
+        //מס ההזמנה האחרון להצגה של הלקוח המזמין
+        Session["orderId"] = order.getLastorderId(order); //תוקנה שגיאה שנבעה מחוסר של משתנה בטבלה
 
-            //================================שלב ב ============================================
-            //הכנסה מסל הקניות לטבלת פראי הזמנה המשמשת כארכיון
-            string conId, orderAmount, total;
-            orders orderLine = new orders();
-            for (int i = 0; i < grdcart.Rows.Count; i++)
-            {
-                conId = grdcart.Rows[i].Cells[1].Text;
-                orderAmount = grdcart.Rows[i].Cells[2].Text;
-                total = grdcart.Rows[i].Cells[3].Text;
+        //================================שלב ב ============================================
+        //הכנסה מסל הקניות לטבלת פראי הזמנה המשמשת כארכיון
+        string conId, orderAmount, total;
+        orders orderLine = new orders();
+        for (int i = 0; i < grdcart.Rows.Count; i++)
+        {
+            conId = grdcart.Rows[i].Cells[2].Text; //2
+            orderAmount = grdcart.Rows[i].Cells[3].Text; //3
+            total = grdcart.Rows[i].Cells[4].Text; //4
             Session["tot"] = total;
             Session["am"] = orderAmount;
-                orderLine.insertOrderDetails(Session["orderId"].ToString(), conId, orderAmount, total,Session["user"].ToString());
+            orderLine.insertOrderDetails(Session["orderId"].ToString(), conId, orderAmount, total, Session["user"].ToString());
 
-            }
-            //=============================שלב ג ==================================================
-            //מחיקה מהסל לאחר  התשלום וההעברה לארכיון של פרטי הזמנה
+        }
+        //=============================שלב ג ==================================================
+        //מחיקה מהסל לאחר  התשלום וההעברה לארכיון של פרטי הזמנה
 
-            orders user1 = new orders();// מחיקה עפ קוד המשתמש
-            user1.Username = Session["user"].ToString();//קוד המשתמש נישלף בשלב א ומשתמש בו כאן
-            orderLine.delFromCart(user1);//קריאה לפעולה עם פרמטר קוד משתמש
-            cart ct = new cart();
-            ct.UserName = Session["user"].ToString();
-            ct.delFromCart(ct);
-            lblsucc.Visible = true;
-            Session["creditCard"] = txtcardNum.Text;
-            pnlPay.Visible = true;
-            lblsucc.Visible = true;
-            reciept.Visible = true;
+        orders user1 = new orders();// מחיקה עפ קוד המשתמש
+        user1.Username = Session["user"].ToString();//קוד המשתמש נישלף בשלב א ומשתמש בו כאן
+        orderLine.delFromCart(user1);//קריאה לפעולה עם פרמטר קוד משתמש
+        cart ct = new cart();
+        ct.UserName = Session["user"].ToString();
+        ct.delFromCart(ct);
+        lblsucc.Visible = true;
+        Session["creditCard"] = txtcardNum.Text;
+        pnlPay.Visible = true;
+        lblsucc.Visible = true;
+        reciept.Visible = true;
 
-       
+
     }
 
     protected void btnreturn_Click(object sender, ImageClickEventArgs e)
@@ -160,5 +170,18 @@ public partial class User_mycart : System.Web.UI.Page
     protected void reciept_Click(object sender, EventArgs e)
     {
         Response.Redirect("reciept.aspx");
+    }
+    protected void grdcart_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int rowIndex = Convert.ToInt32(e.CommandArgument); // Get the row index
+
+        cart ct = new cart();
+
+        GridViewRow row = grdcart.Rows[rowIndex]; // Get the row object
+
+        string x = row.Cells[5].Text; // Access the value in the desired cell of the row
+        ct.UserName = Session["user"].ToString();
+        ct.delitemFromCart(ct, x);
+        Response.Redirect("mycart.aspx");
     }
 }

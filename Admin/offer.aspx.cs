@@ -24,6 +24,10 @@ public partial class Admin_offer : System.Web.UI.Page
         //Amout
         txtAmount.Text = grdMerch.Rows.Count.ToString();
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 
     protected void btnInc_Click(object sender, EventArgs e)
     {

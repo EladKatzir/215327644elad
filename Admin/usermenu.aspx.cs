@@ -25,6 +25,7 @@ public partial class Admin_usermenu : System.Web.UI.Page
                 new { ButtonId = "button2", ButtonText = "users by gender", ButtonDescription = "in here you could see a list of users orignized by gender" },
                  new { ButtonId = "button3", ButtonText = "users by city", ButtonDescription = " in here you could see a list of users orignized by city" },
                 new { ButtonId = "button4", ButtonText = "user info", ButtonDescription = "in here you could see all of a user information by name" },
+                new { ButtonId = "button5", ButtonText = "order by user", ButtonDescription = "in here you could see all of a user's orders" },
                 // Add more buttons as needed
             };
 
@@ -52,6 +53,9 @@ public partial class Admin_usermenu : System.Web.UI.Page
                     break;
                 case "button4":
                     Response.Redirect("../Admin/userInfoByName.aspx");
+                    break;
+                case "button5":
+                    Response.Redirect("../admin/user");
                     break;
                 default:
                     throw new Exception("Unexpected Case");

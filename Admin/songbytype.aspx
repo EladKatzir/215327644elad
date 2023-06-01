@@ -14,15 +14,14 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
-            <a href="../Admin/atype.aspx">
-               <span class="button__text">go menu</span>
-               <span class="button__icon">
-                   <ion-icon name="arrow-redo-outline"></ion-icon>
-               </span>
-           </a>
+     <div style="position: fixed; bottom: 10px; left: 10px;">
+    <button onclick="location.href='productmenu.aspx';">
+        <img src="../images/men.jpg" width=50px height="50px" alt="Icon" />
+    </button>
+</div>
        <form id="form1" runat="server">
     <div>
-    
+    <asp:Button ID="Button1" runat="server" Text="menu" OnClick="btnmenu_Click"  />
     </div>
         <asp:Label ID="lble" runat="server" Font-Size="XX-Large" style="z-index: 1; left: 10px; top: 39px; position: absolute" Text="epmty genere"></asp:Label>
         <asp:DropDownList ID="ddlgen" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlgen_SelectedIndexChanged1" style="z-index: 1; left: 812px; top: 193px; position: absolute">

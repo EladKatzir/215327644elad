@@ -11,18 +11,18 @@
     <form id="form1" runat="server">
     <div>
     </div>
+        <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
          <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
                <span class="button__icon">
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
-                <a href="../Admin/atype.aspx">
-               <span class="button__text">go menu</span>
-               <span class="button__icon">
-                   <ion-icon name="arrow-redo-outline"></ion-icon>
-               </span>
-           </a>
+         <div style="position: fixed; bottom: 10px; left: 10px;">
+    <button onclick="location.href='productmenu.aspx';">
+        <img src="../images/men.jpg" width=50px height="50px" alt="Icon" />
+    </button>
+</div>
         <asp:Label ID="Label1" runat="server" Font-Size="37pt" style="z-index: 1; left: 443px; top: 70px; position: absolute; width: 659px;" Text="עדכון מחיר מוצר"></asp:Label>
         <asp:GridView ID="grdMerch" runat="server" style="z-index: 1; left: 895px; top: 162px; position: absolute; height: 115px; width: 196px" OnRowCommand="grdMerch_RowCommand" OnSelectedIndexChanged="grdMerch_SelectedIndexChanged">
             <Columns>

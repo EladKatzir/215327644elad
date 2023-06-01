@@ -15,6 +15,10 @@ public partial class Admin_userlist : System.Web.UI.Page
         grdlist.DataSource = us.userlist();
         grdlist.DataBind();
     }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
+    }
 
     protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
     {

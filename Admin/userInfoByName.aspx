@@ -23,6 +23,7 @@
     </style>
 </head>
 <body>
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
@@ -30,15 +31,14 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
-            <a href="../Admin/atype.aspx">
-               <span class="button__text">go menu</span>
-               <span class="button__icon">
-                   <ion-icon name="arrow-redo-outline"></ion-icon>
-               </span>
-           </a>
+    <div style="position: fixed; bottom: 10px; left: 10px;">
+    <button onclick="location.href='usermenu.aspx';">
+        <img src="../images/men.jpg" width=50px height="50px" alt="Icon" />
+    </button>
+</div>
     <form id="form1" runat="server">
     <div style="width: 1400px; margin: 0 auto;">
-    
+        <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
    
         <asp:Label ID="Label1" runat="server" style="font-size: xx-large; font-weight: bold" Text="פרטי משתמש לפי שם משתמש" CssClass="auto-style1"></asp:Label>
         <asp:Label ID="lbleu" runat="server" Font-Size="30pt" style="z-index: 1; left: 9px; top: 173px; position: absolute; height: 82px; width: 500px" Text="no user in that name"></asp:Label>
@@ -59,7 +59,7 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:DropDownList ID="ddlun" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="User_Name" DataValueField="UserID" OnSelectedIndexChanged="ddlun_SelectedIndexChanged" style="z-index: 1; left: 662px; top: 133px; position: absolute; right: 656px;">
+        <asp:DropDownList ID="ddlun" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="User_Name" DataValueField="UserID" OnSelectedIndexChanged="ddlun_SelectedIndexChanged" style="z-index: 1; left: 662px; top: 133px; position: absolute; right: 662px; height: 30px; width:30px;">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:newconnect %>" ProviderName="<%$ ConnectionStrings:newconnect.ProviderName %>" SelectCommand="SELECT [User_Name], [UserID] FROM [tblUsers]"></asp:SqlDataSource>
     </form>

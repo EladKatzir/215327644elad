@@ -69,6 +69,10 @@
         <button runat="server" type="submit" class="glow-on-hover" onclick="btnsignup_Click"/> my basket
         </button>
             </a>
+        <a href="catalog.aspx" style="font-size:x-large; color:white; text-decoration:none; text-align:center; top: 700px; left: 800px;"
+        <button runat="server" type="submit" class="glow-on-hover" onclick="btnsignup_Click"/> catalog
+        </button>
+            </a>
          <a href="../Admin/alogin.aspx" style="font-size:x-large; color:white; text-decoration:none; text-align:center; top: 60px; left: 1680px;"
            <button runat="server" type="button" class="button" onclick="btnsignup_Click"/>
                <span class="button__text">admin</span>

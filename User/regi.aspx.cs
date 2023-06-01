@@ -18,9 +18,7 @@ public partial class User_regi : System.Web.UI.Page
     protected void btnStep1_Click(object sender, EventArgs e)
     {
         // Validate input for step 1
-        if (Regex.IsMatch(txtFirstName.Text, @"^[\p{L}\p{M}]+$") &&
-     Regex.IsMatch(txtLastName.Text, @"^[\p{L}\p{M}]+$"))
-
+        if (Regex.IsMatch(txtFirstName.Text, @"^[a-zA-Zא-ת\s]+$") && Regex.IsMatch(txtLastName.Text, @"^[a-zA-Zא-ת\s]+$"))
         {
             // Save data to session
             Session["FirstName"] = txtFirstName.Text;
@@ -85,6 +83,7 @@ public partial class User_regi : System.Web.UI.Page
         {
             User.newuser();
             Session["user"] = Session["FirstName"].ToString();
+            lblSuccess.Visible = true;
             lblSuccess.Text = "Registration successful!";
             pnlStep1.Visible = false;
             pnlStep2.Visible = false;

@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body style="background-color:blueviolet">
+   
      <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
      <button runat="server" type="button" class="button" onclick="goBack()">
                <span class="button__text">go back</span>
@@ -14,15 +15,14 @@
                    <ion-icon name="arrow-redo-outline"></ion-icon>
                </span>
            </button>
-            <a href="../Admin/atype.aspx">
-               <span class="button__text">go menu</span>
-               <span class="button__icon">
-                   <ion-icon name="arrow-redo-outline"></ion-icon>
-               </span>
-           </a>
+     <div style="position: fixed; bottom: 10px; left: 10px;">
+    <button onclick="location.href='reviewmenu.aspx';">
+        <img src="../images/men.jpg" width=50px height="50px" alt="Icon" />
+    </button>
+</div>
     <form id="form1" runat="server">
     <div>
-    
+     <asp:Button ID="btnmenu" runat="server" Text="menu" OnClick="btnmenu_Click"  />
     </div>
         <asp:GridView ID="grdrate" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" Font-Size="X-Large" ForeColor="Black" GridLines="Vertical" style="z-index: 1; left: 395px; top: 107px; position: absolute; height: 384px; width: 682px">
             <AlternatingRowStyle BackColor="#CCCCCC" />

@@ -11,7 +11,10 @@ public partial class Admin_atype : System.Web.UI.Page
     {
 
     }
-
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../user/homepage.aspx");
+    }
     protected void btnuser_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("~/Admin/usermenu.aspx");

@@ -13,8 +13,12 @@ public partial class userListByCity : System.Web.UI.Page
         if (Session["Admin"] == null)
             Response.Redirect("alogin.aspx");
         lbleu.Visible = false;
-        
 
+
+    }
+    protected void btnmenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Admin/atype.aspx");
     }
 
     protected void ddlcity_SelectedIndexChanged(object sender, EventArgs e)

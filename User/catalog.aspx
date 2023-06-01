@@ -19,6 +19,7 @@
         </asp:DropDownList>
         <asp:CheckBoxList ID="cblgenere" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cblgenere_SelectedIndexChanged" style="z-index: 1; left: 211px; top: 24px; position: absolute; height: 26px; width: 86px" BackColor="#CC00CC" BorderColor="#660066" ForeColor="White">
         </asp:CheckBoxList>
+            <asp:Label ID="lble" runat="server" BackColor="#CC00CC" ForeColor="White" style="z-index: 1; left: -4px; top: 274px; position: absolute" Text="txt" Visible="False"></asp:Label>
         </asp:Panel>
         
    
